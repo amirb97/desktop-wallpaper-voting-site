@@ -12,7 +12,7 @@ Wallpaper.init(
             autoIncrement: true
         },
         title: {
-            type: Datatypes.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         wallpaper_url: {
