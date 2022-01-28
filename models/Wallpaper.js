@@ -1,4 +1,4 @@
-const { Model, Datatypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Wallpaper extends Model {}
@@ -12,7 +12,7 @@ Wallpaper.init(
             autoIncrement: true
         },
         title: {
-            type: Datatypes.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         wallpaper_url: {
