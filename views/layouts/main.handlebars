@@ -1,37 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Desktop Wallpaper Voting site</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Desktop Wallpaper Voting site</title>
+        <link rel="stylesheet" href="/stylesheets/style.css">
+    </head>
 
-<body>
-  <div class="wrapper">
-    <header>
-      <h1>
-        <a href="/">Desktop Wallpaper Voting site</a>
-      </h1>
-      <nav>
-  {{#if loggedIn}}
-  <button id="logout" class="btn-no-style">logout</button>
-  {{else}}
-  <a href="/login">login</a>
-  {{/if}}
-</nav>
-    </header>
-    <main>
-      {{{ body }}}
-    </main>
-    <footer>
-      Thanks for visiting!
-    </footer>
-  </div>
-  {{#if loggedIn}}
-<script src="/javascript/logout.js"></script>
-{{/if}}
-</body>
+    <body>
+        <div class="header">
+            <header>
+                 <h1>
+                    <a href="/">Desktop Wallpaper Voting site</a>
+                </h1>
+                <div>
+                    {{#if loggedIn}}
+                    <button id="logout" class="btn-no-style">logout</button>
+                    {{else}}
+                    <a href="/login">login</a>
+                    {{/if}}
+                </div>
+            </header>
+            <main>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="homepage.handlebars">Home</a>
+                        </li>
+                        <li>
+                            <a href="profile.handlebars">Profile</a>
+                        </li>
+                        <li>
+                            <a href="leaderboard.handlebars">Leaderboard</a>
+                        </li>
+                    </ul>
+                </nav>
+            <section>
+                {{{ body }}}
+            </section>
+
+            </main>
+            <footer>
+            Thanks for visiting!
+            </footer>
+        </div>
+        {{#if loggedIn}}
+        <script src="/javascript/logout.js"></script>
+        {{/if}}
+    </body>
 
 </html>
