@@ -49,30 +49,6 @@ router.post('/', (req, res) => {
     });
 });
 
-// post route for user login
-router.post('/login', (req, res) => {
-    User.findOne({
-        where: {
-            email: req.body.email
-        }
-    })
-      .then(dbUserData => {
-          if (!dbUserData) {
-              res.status(400).json({ message: 'No user with that email address!' });
-              return;
-          }
-
-          const validPassword = dbUserData.checkPassword(req.body.password);
-
-          if (!validPassword) {
-              res.status(400).json({ message: 'Incorrect Password!' });
-              return;
-          }
-
-          res.json({ user: dbUserData, message: 'You are now logged in!' });
-      });
-});
-
 // deletes a selected user
 router.delete('/:id', (req, res) => {
     User.destroy({
@@ -92,5 +68,54 @@ router.delete('/:id', (req, res) => {
           res.status(500).json(err);
       });
 });
+
+// post route for user login
+router.post('/login', (req, res) => {
+    try {
+        const dbUserData = await User.findOne({
+          where: {
+            email: req.body.email,
+          },
+        });
+    
+        if (!dbUserData) {
+          res
+            .status(400)
+            .json({ message: 'Incorrect email or password. Please try again!' });
+          return;
+        }
+    
+        const validPassword = await dbUserData.checkPassword(req.body.password);
+    
+        if (!validPassword) {
+          res
+            .status(400)
+            .json({ message: 'Incorrect email or password. Please try again!' });
+          return;
+        }
+    
+        req.session.save(() => {
+          req.session.loggedIn = true;
+    
+          res
+            .status(200)
+            .json({ user: dbUserData, message: 'You are now logged in!' });
+        });
+      } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+      }
+});
+
+// POST route for logout
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    } else {
+      res.status(404).end();
+    }
+  });
 
 module.exports = router;
