@@ -12,14 +12,14 @@ Wallpaper.init(
             autoIncrement: true
         },
         title: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false
         },
         wallpaper_url: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                isURL: true
+                isUrl: true
             }
         },
         user_id: {
