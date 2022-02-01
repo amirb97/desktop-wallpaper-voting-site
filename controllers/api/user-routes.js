@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { json } = require('express/lib/response');
 const { User, Wallpaper } = require('../../models');
 
 // get all users
@@ -46,6 +47,30 @@ router.post('/', (req, res) => {
           console.log(err);
           res.status(500).json(err);
     });
+});
+
+// post route for user login
+router.post('/login', (req, res) => {
+    User.findOne({
+        where: {
+            email: req.body.email
+        }
+    })
+      .then(dbUserData => {
+          if (!dbUserData) {
+              res.status(400).json({ message: 'No user with that email address!' });
+              return;
+          }
+
+          const validPassword = dbUserData.checkPassword(req.body.password);
+
+          if (!validPassword) {
+              res.status(400).json({ message: 'Incorrect Password!' });
+              return;
+          }
+
+          res.json({ user: dbUserData, message: 'You are now logged in!' });
+      });
 });
 
 module.exports = router;
