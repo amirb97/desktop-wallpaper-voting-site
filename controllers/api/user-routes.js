@@ -19,13 +19,7 @@ router.get('/:id', (req, res) => {
         attributes: { exclude: ['password'] },
         where: {
             id: req.params.id
-        },
-        include:  [
-            {
-                model: Wallpaper,
-                attributes: ['id', 'title', 'wallpaper_url', 'user_id', 'elo_score']
-            }
-        ]
+        }
     })
       .then(dbUserData => {
           if (!dbUserData) {
@@ -38,6 +32,20 @@ router.get('/:id', (req, res) => {
           console.log(err);
           res.status(500).json(err);
       })
+});
+
+// posts a new user to the DB
+router.post('/', (req, res) => {
+    User.create({
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
+    })
+      .then(dbUserData => res.json(dbUserData))
+      .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+    });
 });
 
 module.exports = router;
