@@ -1,4 +1,4 @@
-// instatiate sequelize constructor
+// instantiate sequelize constructor
 const Sequelize = require('sequelize');
 
 // db credential protection
