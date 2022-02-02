@@ -6,12 +6,12 @@ const { Wallpaper, User } = require('../../models');
 router.get('/', (req, res) => {
     Wallpaper.findAll({
         order: [['elo_score', 'DESC']],
-        // include: [
-        //     {
-        //         model: User,
-        //         attributes: ['username']
-        //     }
-        // ]
+        include: [
+            {
+                model: User,
+                attributes: ['username']
+            }
+        ]
     })
     .then(dbWallpaperData => res.json(dbWallpaperData))
     .catch(err => {
