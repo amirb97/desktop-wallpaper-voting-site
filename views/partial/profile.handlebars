@@ -1,0 +1,33 @@
+<section>
+{{#if loggedIn}}
+    <div>
+            <h1>Profile</h1>
+            <h3>{{user.session.username}}</h3>
+            <form class="wallpaper-submit">
+        <div>
+            <label for="wallpaper-url">Please attach the link of your favorite wallpaper: </label>
+            <input type="url" id="wallpaper-url" />
+        </div>
+        <div>
+            <label for="wallpaper-title">Please enter a title for your wallpaper:</label>
+            <input type="text" id="wallpaper-title" />
+        </div>
+        <div>
+            <button type="submit">submit</button>
+        </div>
+        </form>
+    </div>
+    <div>
+        <h1>Your Wallpaper:</h1>
+        {{#if user.wallpaper_confirm}}
+        {{#each wallpaper.wallpaper_url}}
+        <h3>{{title}}</h3>
+        <img src="{{wallpaper_url}}" alt="{{title}}">
+        {{/if}}
+        
+    </div>
+{{else}}
+<h1>Please log in to your account to see your profile!</h1>
+<a href="login.handlebars">Sign up</a>
+{{/if}}   
+</section>

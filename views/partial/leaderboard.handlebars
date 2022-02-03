@@ -1,2 +1,10 @@
-<ol>
-</ol>
+<section>
+    {{#each wallpaper.wallpaper_url}}
+        {{#each wallpaper.title}}
+            <div>
+                <h1>{{wallpaper.title}}</h1>
+                <img src="{{wallpaper.wallpaper_url}}" alt="{{wallpaper.title}}">
+            </div>
+        {{/each}}
+    {{/each}}
+</section>
