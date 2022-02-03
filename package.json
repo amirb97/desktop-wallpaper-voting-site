@@ -21,6 +21,7 @@
   "homepage": "https://github.com/amirb97/desktop-wallpaper-voting-site#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "connect-session-sequelize": "^7.1.2",
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
