@@ -82,8 +82,8 @@ router.post('/', (req, res) => {
     Wallpaper.create({
         title: req.body.title,
         wallpaper_url: req.body.wallpaper_url,
-        user_id: req.body.user_id,
-        elo_score: req.body.elo_score
+        user_id: req.session.user_id,
+        elo_score: 1000
     })
     .then(dbWallpaperData => res.json(dbWallpaperData))
     .catch(err => {
