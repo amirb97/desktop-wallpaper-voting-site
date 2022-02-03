@@ -38,7 +38,7 @@ const userdata = [
         id: 2,
         username: 'amir',
         email: 'amir@amir.com',
-        password: 'hash',
+        password: hash,
         wallpapers: [
             {
                 id: 4,
@@ -68,7 +68,7 @@ const userdata = [
         id: 3,
         username: 'adam',
         email: 'adam@adam.com',
-        password: 'hash',
+        password: hash,
         wallpapers: [
             {
                 id: 7,
@@ -98,7 +98,7 @@ const userdata = [
         id: 4,
         username: 'arnold',
         email: 'arnold@arnold.com',
-        password: 'hash',
+        password: hash,
         wallpapers: [
             {
                 id: 10,
@@ -113,7 +113,7 @@ const userdata = [
         id: 5,
         username: 'cory',
         email: 'cory@cory.com',
-        password: 'hash',
+        password: hash,
         wallpapers: [
             {
                 id: 11,
