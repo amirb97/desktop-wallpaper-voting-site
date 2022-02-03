@@ -2,7 +2,7 @@
 {{#if loggedIn}}
     <div>
             <h1>Profile</h1>
-            <h3>{{user.session.username}}</h3>
+            <h3>{{profile.session.username}}</h3>
             <form class="wallpaper-submit">
         <div>
             <label for="wallpaper-url">Please attach the link of your favorite wallpaper: </label>
@@ -21,13 +21,14 @@
         <h1>Your Wallpaper:</h1>
         {{#if user.wallpaper_confirm}}
         {{#each wallpaper.wallpaper_url}}
-        <h3>{{title}}</h3>
+        <h3>{{user.wallpaper}}</h3>
         <img src="{{wallpaper_url}}" alt="{{title}}">
+        {{/each}}
         {{/if}}
         
     </div>
 {{else}}
 <h1>Please log in to your account to see your profile!</h1>
-<a href="login.handlebars">Sign up</a>
+<a href="/login">Sign up</a>
 {{/if}}   
 </section>
