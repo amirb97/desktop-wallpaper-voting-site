@@ -1,11 +1,14 @@
 const { User } = require('../models');
+const bcrypt = require('bcrypt');
+const password = process.env.password
+const hash = bcrypt.hashSync(password, 10);
 
 const userdata = [
     {
         id: 1,
         username: 'alan',
         email: 'alan@alan.com',
-        password: 'password',
+        password: hash,
         wallpapers: [
             {
                 id: 1,
@@ -35,7 +38,7 @@ const userdata = [
         id: 2,
         username: 'amir',
         email: 'amir@amir.com',
-        password: 'password',
+        password: hash,
         wallpapers: [
             {
                 id: 4,
@@ -65,7 +68,7 @@ const userdata = [
         id: 3,
         username: 'adam',
         email: 'adam@adam.com',
-        password: 'password',
+        password: hash,
         wallpapers: [
             {
                 id: 7,
@@ -95,7 +98,7 @@ const userdata = [
         id: 4,
         username: 'arnold',
         email: 'arnold@arnold.com',
-        password: 'password',
+        password: hash,
         wallpapers: [
             {
                 id: 10,
@@ -110,7 +113,7 @@ const userdata = [
         id: 5,
         username: 'cory',
         email: 'cory@cory.com',
-        password: 'password',
+        password: hash,
         wallpapers: [
             {
                 id: 11,

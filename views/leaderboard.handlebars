@@ -1,10 +1,9 @@
 <section>
-    {{#each wallpaper.wallpaper_url}}
-        {{#each wallpaper.title}}
-            <div>
-                <h1>{{wallpaper.title}}</h1>
-                <img src="{{wallpaper.wallpaper_url}}" alt="{{wallpaper.title}}">
-            </div>
-        {{/each}}
+    {{#each slicedWallpapers}}
+        <div>
+            <h1>{{title}}</h1>
+            <img class="wallpaper" src="{{wallpaper_url}}" alt="{{title}}">
+            <p>Author:{{user.username}}          Score:{{elo_score}}</p>
+        </div>
     {{/each}}
 </section>

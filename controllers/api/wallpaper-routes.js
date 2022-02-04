@@ -20,32 +20,32 @@ router.get('/', (req, res) => {
     })
 })
 
-// GET /api/wallpapers/username
+// // GET /api/wallpapers/username
 
-router.get('/username/:user_id', (req,res) => {
-    Wallpaper.findAll({
-        where: {
-            user_id: req.params.user_id
-        },
-        include: [
-            {
-                model: User,
-                attributes: ['username']
-            }
-        ]
-    })
-    .then(dbWallpaperData => {
-        if (!dbWallpaperData) {
-            res.status(404).json({ message: 'no image found with this id'});
-            return;
-        }
-        res.json(dbWallpaperData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
-});
+// router.get('/username/:user_id', (req,res) => {
+//     Wallpaper.findAll({
+//         where: {
+//             user_id: req.params.user_id
+//         },
+//         include: [
+//             {
+//                 model: User,
+//                 attributes: ['username']
+//             }
+//         ]
+//     })
+//     .then(dbWallpaperData => {
+//         if (!dbWallpaperData) {
+//             res.status(404).json({ message: 'no image found with this id'});
+//             return;
+//         }
+//         res.json(dbWallpaperData);
+//     })
+//     .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//     });
+// });
 
 
 // GET /api/wallpapers/1
@@ -86,6 +86,25 @@ router.post('/', (req, res) => {
         elo_score: 1000
     })
     .then(dbWallpaperData => res.json(dbWallpaperData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+//  PUT /api/wallpapers/1
+router.put('/:id', (req, res) => {
+    Wallpaper.update(
+        {
+            elo_score: req.body.elo_score
+        },
+        {
+            where:{
+                id: req.params.id
+            }
+        }
+    )
+    .then(dpWallpaperData => res.json(dpWallpaperData))
     .catch(err => {
         console.log(err);
         res.status(500).json(err);

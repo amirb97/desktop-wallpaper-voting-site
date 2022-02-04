@@ -129,3 +129,16 @@
     padding: 1%;
     font-size: 110%;
   }
+
+  .wallpaper {
+    width: 500px;
+    transition: width 2s, height 2s;
+  }
+
+  #picture1:hover {
+    width: 600px;
+  }
+
+  #picture2:hover {
+    width: 600px;
+  }
