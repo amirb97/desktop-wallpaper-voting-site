@@ -20,34 +20,6 @@ router.get('/', (req, res) => {
     })
 })
 
-// // GET /api/wallpapers/username
-
-// router.get('/username/:user_id', (req,res) => {
-//     Wallpaper.findAll({
-//         where: {
-//             user_id: req.params.user_id
-//         },
-//         include: [
-//             {
-//                 model: User,
-//                 attributes: ['username']
-//             }
-//         ]
-//     })
-//     .then(dbWallpaperData => {
-//         if (!dbWallpaperData) {
-//             res.status(404).json({ message: 'no image found with this id'});
-//             return;
-//         }
-//         res.json(dbWallpaperData);
-//     })
-//     .catch(err => {
-//         console.log(err);
-//         res.status(500).json(err);
-//     });
-// });
-
-
 // GET /api/wallpapers/1
 
 router.get('/:id', (req,res) => {
