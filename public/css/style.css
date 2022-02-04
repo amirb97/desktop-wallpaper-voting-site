@@ -6,7 +6,7 @@
     height: 100%;
     padding: 0;
     margin: 0;
-    font-family: sans-serif;
+    font-family: Script;
     font-weight: 400;
     font-size: 1rem;
     line-height: 1.5;
@@ -18,6 +18,10 @@
       padding: 20px 0px;
   }
 
+  h1 {
+      padding: 20px 0px;
+  }
+
   a {
     text-decoration: none;
     color: #4adb37;
@@ -25,8 +29,8 @@
     transition: color .1s;
   }
   
-  a:hover {
-    color: #abf8ab;
+  a :hover {
+    color: #ffffff;
   }
   
   button {
@@ -77,6 +81,24 @@
     display: block;
   }
   
+  .normspro {
+      font-family: Script;
+      font-style: italic;
+      font-size: 40px;
+  }
+
+  .textstyle {
+    font-family: Script;
+    font-style: italic;
+    font-size: 25px;
+  }
+
+  .formstyle {
+      font-family: Helvetica;
+      font-size: 15px;
+      font-style: italic;
+  }
+
   .wrapper {
     width: 100%;
     min-height: 100%;

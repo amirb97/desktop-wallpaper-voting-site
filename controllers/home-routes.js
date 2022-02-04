@@ -18,16 +18,15 @@ router.get('/', (req, res) => {
           }
         ]
       })
-        .then(dbPostData => {
-
-          // pass a single wallpapers object into the homepage template
-          const wallpapers = dbPostData.map(post =>  post.get({ plain: true }));
-
-          res.render('homepage', {
-             wallpapers,
-            loggedIn: req.session.loggedIn
-          });
-        })
+      .then(dbPostData => {
+        // pass a single wallpapers object into the homepage template
+        const wallpapers = dbPostData.map(wallpaper =>  wallpaper.get({ plain: true }));
+        wallpapers.sort((a,b) => (a.elo_score >= b.elo_score) ? -1: 1);
+        const slicedWallpapers = wallpapers.slice(0,10);
+        res.render('homepage', {
+           slicedWallpapers,
+          loggedIn: req.session.loggedIn});
+      })
         .catch(err => {
           console.log(err);
           res.status(500).json(err);
@@ -94,7 +93,9 @@ router.get('/leaderboard', (req, res) => {
         const wallpapers = dbPostData.map(wallpaper =>  wallpaper.get({ plain: true }));
         wallpapers.sort((a,b) => (a.elo_score >= b.elo_score) ? -1: 1);
         const slicedWallpapers = wallpapers.slice(0,10);
-        res.render('leaderboard', { slicedWallpapers });
+        res.render('leaderboard', {
+           slicedWallpapers,
+          loggedIn: req.session.loggedIn});
       })
       .catch(err => {
         console.log(err);
@@ -122,7 +123,10 @@ router.get('/vote', (req, res) => {
         // pass a single wallpapers object into the homepage template
         const wallpapers = dbPostData.map(wallpaper =>  wallpaper.get({ plain: true }));
         const voteImgs = [wallpapers[Math.floor(Math.random()*wallpapers.length)], wallpapers[Math.floor(Math.random()*wallpapers.length)]];
-        res.render('voting', { voteImgs });
+        res.render('voting', { 
+        voteImgs,
+        loggedIn: req.session.loggedIn
+        });
       })
       .catch(err => {
         console.log(err);

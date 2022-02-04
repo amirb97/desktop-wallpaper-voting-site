@@ -1,9 +1,9 @@
 <section>
     {{#each slicedWallpapers}}
-        <div>
+        <div class="border-bottom">
             <h1>{{title}}</h1>
-            <img class="wallpaper" src="{{wallpaper_url}}" alt="{{title}}">
-            <p>Author:{{user.username}}          Score:{{elo_score}}</p>
+            <img class="img-fluid rounded shadow-lg mb-5" src="{{wallpaper_url}}" alt="{{title}}">
+            <p class="textstyle">Author : {{user.username}}</p>   <p>Score : {{elo_score}}</p>
         </div>
     {{/each}}
 </section>
