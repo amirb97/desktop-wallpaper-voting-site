@@ -1,0 +1,170 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Script;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+  }
+  
+  li {
+      list-style: none;
+      padding: 20px 0px;
+  }
+
+  h1 {
+      padding: 20px 0px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #4adb37;
+    font-weight: bold;
+    transition: color .1s;
+  }
+  
+  button {
+    background-color: #225ca3;
+    border: 0;
+    padding: 1%;
+    color: white;
+    font-weight: bold;
+    transition: background-color .1s;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #3486eb;
+  }
+  
+  .navbar {
+    display: flex;
+    height: 50%;
+    width: 100px;
+    background-color: rgb(231, 255, 175);
+    padding: 10px;
+    margin: 10px;
+  }
+
+  textarea, input {
+    padding: .5%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  textarea:focus, input:focus {
+    outline: none;
+    border: 1px solid #3486eb;
+  }
+  
+  textarea {
+    min-width: 40%;
+    min-height: 100px;
+  }
+  
+  form > div {
+    margin-bottom: 2%;
+  }
+  
+  form label {
+    display: block;
+  }
+  
+  .normspro {
+      font-family: Script;
+      font-style: italic;
+      font-size: 40px;
+  }
+
+  .textstyle {
+    font-family: Script;
+    font-style: italic;
+    font-size: 25px;
+  }
+
+  .formstyle {
+      font-family: Helvetica;
+      font-size: 15px;
+      font-style: italic;
+  }
+
+  .wrapper {
+    width: 100%;
+    min-height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  header {
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1%;
+  }
+  
+  header h1 {
+    font-size: 1em;
+  }
+  
+  main {
+    flex: 1;
+    padding: 2% 4%;
+  }
+  
+  .btn-no-style {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: none;
+    color: #225ca3;
+    font-size: 100%;
+    font-weight: bold;
+    transition: color .1s;
+    margin-left: 16px;
+  }
+  
+  .btn-no-style:hover {
+    background: none;
+    color: #3486eb;
+  }
+
+  
+  footer {
+    border-top: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    padding: 1%;
+    font-size: 110%;
+  }
+
+  .wallpaper {
+    width: 500px;
+    transition: width 1s, height 1s;
+  }
+
+  #picture1:hover {
+    width: 600px;
+  }
+
+  #picture2:hover {
+    width: 600px;
+  }
+
+  .nav ul li a {
+    transition: all 2s;
+  }
+
+  .nav ul li a:hover {
+    font-size: 250%;
+  }

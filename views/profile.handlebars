@@ -1,0 +1,36 @@
+<section>
+{{#if loggedIn}}
+    <div>
+            <h1 class="border-bottom">Profile</h1>
+            <h3 class="fontstyle">{{profile.username}}</h3>
+            <form class="form-group wallpaper-submit">
+        <div>
+            <label for="wallpaper-url" class="fontstyle py-1">Please attach the link of your favorite wallpaper: </label>
+            <input type="url" class="form-control" id="wallpaper-url" placeholder="Enter URl"/>
+        </div>
+        <div>
+            <label for="wallpaper-title" class="fontstyle py-1">Please enter a title for your wallpaper:</label>
+            <input type="text" class="form-control" id="wallpaper-title" placeholder="Enter Title"/>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-dark">submit</button>
+        </div>
+        </form>
+    </div>
+    <div>
+        <h1 class="border-bottom">Your Wallpaper:</h1>
+        {{#if loggedIn}}
+        {{#each wallpapers}}
+        <h3>{{title}}</h3>
+        <img class="img-fluid rounded shadow-lg mb-5" src="{{wallpaper_url}}" alt="{{title}}">
+        {{/each}}
+        {{/if}}
+        
+    </div>
+{{else}}
+<h1>Please log in to your account to see your profile!</h1>
+<a href="/login">Sign up</a>
+{{/if}}   
+</section>
+
+<script src="/js/profile.js"></script>
