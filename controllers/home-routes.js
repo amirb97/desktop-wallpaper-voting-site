@@ -74,6 +74,7 @@ router.get('/profile', (req, res) => {
 
 router.get('/leaderboard', (req, res) => {
   Wallpaper.findAll({
+      order: [['elo_score', 'DESC']],
       attributes: [
         'id',
         'title',
@@ -86,13 +87,12 @@ router.get('/leaderboard', (req, res) => {
           model: User,
           attributes: ['username']
         }
-      ]
+      ],
+      limit: 10
     })
       .then(dbPostData => {
         // pass a single wallpapers object into the homepage template
-        const wallpapers = dbPostData.map(wallpaper =>  wallpaper.get({ plain: true }));
-        wallpapers.sort((a,b) => (a.elo_score >= b.elo_score) ? -1: 1);
-        const slicedWallpapers = wallpapers.slice(0,10);
+        const slicedWallpapers = dbPostData.map(wallpaper =>  wallpaper.get({ plain: true }));
         res.render('leaderboard', {
            slicedWallpapers,
           loggedIn: req.session.loggedIn});
