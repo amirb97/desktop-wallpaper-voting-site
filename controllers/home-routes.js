@@ -3,8 +3,6 @@ const sequelize = require('../config/connection');
 const { User, Wallpaper } = require('../models');
 
 router.get('/', (req, res) => {
-    console.log(req.session);
-
     Wallpaper.findAll({
         attributes: [
           'id',
@@ -22,7 +20,7 @@ router.get('/', (req, res) => {
       })
         .then(dbPostData => {
 
-          // pass a single post object into the homepage template
+          // pass a single wallpapers object into the homepage template
           const wallpapers = dbPostData.map(post =>  post.get({ plain: true }));
 
           res.render('homepage', {
@@ -60,10 +58,9 @@ router.get('/profile', (req, res) => {
   })
   .then(dbPostData => {
 
-    // pass a single post object into the homepage template
+    // pass a single wallpapers object into the homepage template
     const profile = dbPostData.dataValues;
     const wallpapers = profile.wallpapers.map(wallpaper => wallpaper.get({plain: true}));
-    console.log(wallpapers);
     res.render('profile', { 
       profile,
       wallpapers,
@@ -77,8 +74,6 @@ router.get('/profile', (req, res) => {
 });
 
 router.get('/leaderboard', (req, res) => {
-  console.log(req.session);
-
   Wallpaper.findAll({
       attributes: [
         'id',
@@ -95,9 +90,11 @@ router.get('/leaderboard', (req, res) => {
       ]
     })
       .then(dbPostData => {
-        // pass a single post object into the homepage template
-        const posts = dbPostData.map(post =>  post.get({ plain: true }));
-        res.render('leaderboard', { posts });
+        // pass a single wallpapers object into the homepage template
+        const wallpapers = dbPostData.map(wallpaper =>  wallpaper.get({ plain: true }));
+        wallpapers.sort((a,b) => (a.elo_score >= b.elo_score) ? -1: 1);
+        const slicedWallpapers = wallpapers.slice(0,10);
+        res.render('leaderboard', { slicedWallpapers });
       })
       .catch(err => {
         console.log(err);
@@ -106,8 +103,6 @@ router.get('/leaderboard', (req, res) => {
 });
 
 router.get('/vote', (req, res) => {
-  console.log(req.session);
-
   Wallpaper.findAll({
       attributes: [
         'id',
@@ -124,9 +119,10 @@ router.get('/vote', (req, res) => {
       ]
     })
       .then(dbPostData => {
-        // pass a single post object into the homepage template
-        const posts = dbPostData.map(post =>  post.get({ plain: true }));
-        res.render('voting', { posts });
+        // pass a single wallpapers object into the homepage template
+        const wallpapers = dbPostData.map(wallpaper =>  wallpaper.get({ plain: true }));
+        const voteImgs = [wallpapers[Math.floor(Math.random()*wallpapers.length)], wallpapers[Math.floor(Math.random()*wallpapers.length)]];
+        res.render('voting', { voteImgs });
       })
       .catch(err => {
         console.log(err);
