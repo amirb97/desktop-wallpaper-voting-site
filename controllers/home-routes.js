@@ -127,7 +127,16 @@ router.get('/vote', (req, res) => {
       .then(dbPostData => {
         // pass a single wallpapers object into the homepage template
         const wallpapers = dbPostData.map(wallpaper =>  wallpaper.get({ plain: true }));
-        const voteImgs = [wallpapers[Math.floor(Math.random()*wallpapers.length)], wallpapers[Math.floor(Math.random()*wallpapers.length)]];
+        
+        let numOne = Math.floor(Math.random()*wallpapers.length);
+        let numTwo = Math.floor(Math.random()*wallpapers.length);
+
+        do {
+          numTwo = Math.floor(Math.random()*wallpapers.length);
+        } while(numOne === numTwo);
+
+        const voteImgs = [wallpapers[numOne], wallpapers[numTwo]];
+
         res.render('voting', { 
         voteImgs,
         loggedIn: req.session.loggedIn
