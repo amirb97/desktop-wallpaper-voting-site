@@ -76,6 +76,10 @@
   form label {
     display: block;
   }
+
+  .about p{
+    font-size: 20px;
+  }
   
   .normspro {
       font-family: Script;
