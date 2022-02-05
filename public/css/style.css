@@ -142,7 +142,7 @@
   
   footer {
     border-top: 1px solid #ccc;
-    display: flex;
+    display: block;
     justify-content: center;
     padding: 1%;
     font-size: 110%;
@@ -161,10 +161,15 @@
     width: 600px;
   }
 
+  .nav {
+    position: absolute;
+    left: 0;
+  }
+
   .nav ul li a {
     transition: all 2s;
   }
 
   .nav ul li a:hover {
-    font-size: 250%;
+    font-size: 200%;
   }

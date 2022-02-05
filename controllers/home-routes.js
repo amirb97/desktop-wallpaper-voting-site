@@ -43,7 +43,8 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/profile', (req, res) => {
-  User.findOne({
+  if(req.session.loggedIn){
+    User.findOne({
       attributes: { exclude: ['password'] },
       where: {
           id: req.session.user_id
@@ -54,22 +55,25 @@ router.get('/profile', (req, res) => {
           attributes: ['id', 'title','wallpaper_url', 'user_id', 'elo_score']
         }
       ]
-  })
-  .then(dbPostData => {
+    })
+    .then(dbPostData => {
 
-    // pass a single wallpapers object into the homepage template
-    const profile = dbPostData.dataValues;
-    const wallpapers = profile.wallpapers.map(wallpaper => wallpaper.get({plain: true}));
-    res.render('profile', { 
-      profile,
-      wallpapers,
-      loggedIn: req.session.loggedIn
-     });
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+      // pass a single wallpapers object into the homepage template
+      const profile = dbPostData.dataValues;
+      const wallpapers = profile.wallpapers.map(wallpaper => wallpaper.get({plain: true}));
+      res.render('profile', { 
+        profile,
+        wallpapers,
+        loggedIn: req.session.loggedIn
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+  } else {
+    res.render('login');
+  }
 });
 
 router.get('/leaderboard', (req, res) => {
@@ -104,7 +108,8 @@ router.get('/leaderboard', (req, res) => {
 });
 
 router.get('/vote', (req, res) => {
-  Wallpaper.findAll({
+  if (req.session.loggedIn) {
+    Wallpaper.findAll({
       attributes: [
         'id',
         'title',
@@ -131,7 +136,10 @@ router.get('/vote', (req, res) => {
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
-      });
+    });
+  } else {
+    res.render('login');
+  }
 });
 
 module.exports = router;
