@@ -124,6 +124,10 @@
     flex: 1;
     padding: 2% 4%;
   }
+
+  .voto {
+    font-size: 40px;
+  }
   
   .btn-no-style {
     background: none;
@@ -165,15 +169,16 @@
     width: 600px;
   }
 
-  .nav {
-    position: absolute;
-    left: 0;
-  }
-
-  .nav ul li a {
+  .nav a {
+    border-top: 2px solid #212324;
+    border-bottom: 2px solid #212324;
+    padding: 5px;
     transition: all 2s;
   }
 
-  .nav ul li a:hover {
-    font-size: 200%;
+  .nav a:hover {
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    padding: 5px;
   }
+  
