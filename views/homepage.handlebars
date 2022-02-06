@@ -1,8 +1,20 @@
-    <div>
-        <h1>{{slicedWallpapers.0.title}}</h1>
-        <img src="{{slicedWallpapers.0.wallpaper_url}}" alt="{{slicedWallpapers.0.title}}" class="img-fluid rounded shadow-lg mb-5">
-    </div>
-    <div>
-        <h1>{{slicedWallpapers.1.title}}</h1>
-        <img src="{{slicedWallpapers.1.wallpaper_url}}" alt="{{slicedWallpapers.1.title}}" class="img-fluid rounded shadow-lg mb-5">
+    <div class="row">
+        <div class="row about border-bottom">
+            <h1 class="text-center">Welcome to Voto!</h1>
+            <p class="text-center">Voto is site where you can upload and vote on your favorite desktop wallpapers!</p>
+            <p class="text-center">
+                Simply create an account to start uploading or voting on your favorite wallpapers, and if you don't feel like participating and just want to see
+                what wallpapers have been voted the best by our community click the "Leaderboard" link to see the sites current top 10 wallpapers!  The images below
+                show the sites current top 2 wallpapers voted on by our community members.
+            </p>
+        </div>
+        <div class="col-6 text-center mt-5">
+            <h2>{{slicedWallpapers.0.title}}</h2>
+            <img src="{{slicedWallpapers.0.wallpaper_url}}" alt="{{slicedWallpapers.0.title}}" class="wallpaper img-fluid rounded shadow-lg mb-5">
+        </div>
+
+        <div class="col-6 text-center mt-5">
+            <h2>{{slicedWallpapers.1.title}}</h2>
+            <img src="{{slicedWallpapers.1.wallpaper_url}}" alt="{{slicedWallpapers.1.title}}" class="wallpaper img-fluid rounded shadow-lg mb-5">
+        </div>
     </div>
