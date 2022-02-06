@@ -1,9 +1,9 @@
 <section>
 {{#if loggedIn}}
     <div>
-            <h1 class="border-bottom">Profile</h1>
-            <h3 class="fontstyle">{{profile.username}}</h3>
-            <form class="form-group wallpaper-submit">
+        <h1 class="text-center border-bottom">Your Profile</h1>
+        <h3 class="text-center fontstyle">Username: {{profile.username}}</h3>
+        <form class="form-group wallpaper-submit">
         <div>
             <label for="wallpaper-url" class="fontstyle py-1">Please attach the link of your favorite wallpaper: </label>
             <input type="url" class="form-control" id="wallpaper-url" placeholder="Enter URl"/>
@@ -17,12 +17,12 @@
         </div>
         </form>
     </div>
-    <div>
-        <h1 class="border-bottom">Your Wallpaper:</h1>
+    <div class="text-center">
+        <h1 class="border-bottom">Your Wallpapers:</h1>
         {{#if loggedIn}}
         {{#each wallpapers}}
         <h3>{{title}}</h3>
-        <img class="img-fluid rounded shadow-lg mb-5" src="{{wallpaper_url}}" alt="{{title}}">
+        <img class="wallpaper img-fluid rounded shadow-lg mb-5" src="{{wallpaper_url}}" alt="{{title}}">
         {{/each}}
         {{/if}}
         

@@ -76,6 +76,10 @@
   form label {
     display: block;
   }
+
+  .about p{
+    font-size: 20px;
+  }
   
   .normspro {
       font-family: Script;
@@ -120,6 +124,10 @@
     flex: 1;
     padding: 2% 4%;
   }
+
+  .voto {
+    font-size: 40px;
+  }
   
   .btn-no-style {
     background: none;
@@ -142,7 +150,7 @@
   
   footer {
     border-top: 1px solid #ccc;
-    display: flex;
+    display: block;
     justify-content: center;
     padding: 1%;
     font-size: 110%;
@@ -161,10 +169,16 @@
     width: 600px;
   }
 
-  .nav ul li a {
+  .nav a {
+    border-top: 2px solid #212324;
+    border-bottom: 2px solid #212324;
+    padding: 5px;
     transition: all 2s;
   }
 
-  .nav ul li a:hover {
-    font-size: 250%;
+  .nav a:hover {
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    padding: 5px;
   }
+  

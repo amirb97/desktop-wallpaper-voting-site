@@ -1,5 +1,5 @@
 async function firstWallpaperWin() {
-    const id = picture1.dataset.id;
+    let id = picture1.dataset.id;
     let elo_score = parseInt(picture1.dataset.elo_score);
     elo_score += 50;
     const response = await fetch(`/api/wallpapers/${id}`, {
@@ -10,7 +10,18 @@ async function firstWallpaperWin() {
         headers: { 'Content-Type': 'application/json'}
     });
 
-    if (response.ok) {
+    id = picture2.dataset.id;
+    elo_score = parseInt(picture2.dataset.elo_score);
+    elo_score -= 50;
+    const response2 = await fetch(`/api/wallpapers/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            elo_score
+        }),
+        headers: { 'Content-Type': 'application/json'}
+    });
+
+    if (response2.ok) {
         document.location.replace('/vote');
     } else {
         alert(response.statusText);
@@ -18,7 +29,7 @@ async function firstWallpaperWin() {
 };
 
 async function secondWallpaperWin() {
-    const id = picture2.dataset.id;
+    let id = picture2.dataset.id;
     let elo_score = parseInt(picture2.dataset.elo_score);
     elo_score += 50;
     const response = await fetch(`/api/wallpapers/${id}`, {
@@ -29,13 +40,23 @@ async function secondWallpaperWin() {
         headers: { 'Content-Type': 'application/json'}
     });
 
-    if (response.ok) {
+    id = picture1.dataset.id;
+    elo_score = parseInt(picture1.dataset.elo_score);
+    elo_score -= 50;
+    const response2 = await fetch(`/api/wallpapers/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            elo_score
+        }),
+        headers: { 'Content-Type': 'application/json'}
+    });
+
+    if (response2.ok) {
         document.location.replace('/vote');
     } else {
         alert(response.statusText);
     }
 };
-
 
 const picture1 = document.querySelector('#picture1');
 picture1.addEventListener('click', firstWallpaperWin);
